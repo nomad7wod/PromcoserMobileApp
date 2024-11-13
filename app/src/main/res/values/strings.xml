@@ -9,9 +9,25 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_personal">Personal</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="valMaquinaria">Maquinaria</string>
+    <string name="tituloPersonalFragment">Registro de Personal</string>
+    <string name="txtnombre">Nombre Completo</string>
+    <string name="txtapellidos">Apellidos</string>
+    <string name="valHintapellidos">Apellidos</string>
+    <string name="valrol">Rol</string>
+    <string name="txtphonenumber">Numero de telefono</string>
+    <string name="valemail">Email</string>
+    <string name="valnumeroDni">Dni</string>
+    <string name="txtEstado">Estado</string>
+    <string name="txtrgactivo">Activo</string>
+    <string name="txtnoactivo">No Activo</string>
+    <string name="txtañonacimiento">Fecha de Nacimiento</string>
+    <string name="txtUbicacion">Ubicacion</string>
+    <string name="valUsernametext">Usuario</string>
+    <string name="txtpassword">Contraseña</string>
+    <string name="txtabuttonregister">Registrar Personal</string>
 </resources>
