@@ -8,6 +8,14 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Login -->
+    <string name="valLogo">Logo</string>
+    <string name="valTituloLogin">INICIAR SESIÓN</string>
+    <string name="valHintCorreo">Correo</string>
+    <string name="valHintPassword">Contraseña</string>
+    <string name="valAcceder">ACCEDER</string>
+    <string name="valRegistro">REGISTRARME</string>
+
     <string name="menu_home">Home</string>
     <string name="menu_personal">Personal</string>
     <string name="menu_slideshow">Slideshow</string>
