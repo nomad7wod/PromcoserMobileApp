@@ -28,9 +28,6 @@
             android:theme="@style/Theme.PromcoserMobileApp.NoActionBar">
         </activity>
         <activity
-            android:name=".TestActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
         </activity>

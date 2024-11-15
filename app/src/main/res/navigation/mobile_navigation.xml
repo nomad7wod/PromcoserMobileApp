@@ -18,13 +18,13 @@
         tools:layout="@layout/fragment_personal" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.promcosermobileapp.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/nav_maquinaria"
         android:name="com.example.promcosermobileapp.MaquinariaFragment"
         android:label="fragment_maquinaria"
         tools:layout="@layout/fragment_maquinaria" />
+    <fragment
+        android:id="@+id/nav_cliente"
+        android:name="com.example.promcosermobileapp.ui.cliente.ClienteFragment"
+        android:label="@string/menu_cliente"
+        tools:layout="@layout/fragment_cliente" />
 </navigation>

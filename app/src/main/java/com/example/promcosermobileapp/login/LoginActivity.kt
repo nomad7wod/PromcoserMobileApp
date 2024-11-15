@@ -7,7 +7,9 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.promcosermobileapp.MainActivity
+import com.example.promcosermobileapp.NavigationPromcoserActivity
 import com.example.promcosermobileapp.R
+import com.example.promcosermobileapp.ui.cliente.ClienteFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -41,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
     private fun login(email: String, password: String) {
         val loginRequest = LoginRequest(email, password)
         if(email=="admin@gmail.com" && password=="12345"){
-            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            val intent = Intent(this@LoginActivity, NavigationPromcoserActivity::class.java)
             startActivity(intent)
             finish()
         }else{
@@ -50,7 +52,7 @@ class LoginActivity : AppCompatActivity() {
                     if (response.isSuccessful && response.body()?.success == true) {
                         Toast.makeText(this@LoginActivity, "Login Exitoso", Toast.LENGTH_SHORT).show()
                         // Aquí redirigo xd
-                        val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        val intent = Intent(this@LoginActivity, NavigationPromcoserActivity::class.java)
                         startActivity(intent)
                         finish()
                     } else {

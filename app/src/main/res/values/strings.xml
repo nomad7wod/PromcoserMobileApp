@@ -38,4 +38,12 @@
     <string name="valUsernametext">Usuario</string>
     <string name="txtpassword">Contraseña</string>
     <string name="txtabuttonregister">Registrar Personal</string>
+    <string name="tituloClienteFragment">Registro de Cliente</string>
+    <string name="tipoCliente">Tipo de Cliente</string>
+    <string name="razonSocial">Razon Social</string>
+    <string name="ruc">RUC</string>
+    <string name="direccion">Direccion</string>
+    <string name="Cliente">menu_cliente</string>
+    <string name="menu_cliente">Cliente</string>
+    <string name="valbtnregcliente">Registrar Cliente</string>
 </resources>
