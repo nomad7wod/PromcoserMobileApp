@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,24 +15,25 @@
         android:theme="@style/Theme.PromcoserMobileApp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Test"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
-            android:exported="true" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".NavigationPromcoserActivity"
             android:exported="true"
             android:label="@string/title_activity_navigation_promcoser"
-            android:theme="@style/Theme.PromcoserMobileApp.NoActionBar">
-        </activity>
+            android:theme="@style/Theme.PromcoserMobileApp.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

@@ -22,9 +22,21 @@
         android:name="com.example.promcosermobileapp.MaquinariaFragment"
         android:label="fragment_maquinaria"
         tools:layout="@layout/fragment_maquinaria" />
+
+    <action
+        android:id="@+id/action_maquinariaFragment_to_listaMaquinariasFragment"
+        app:destination="@id/listaMaquinariasFragment" />
+
+    <fragment
+        android:id="@+id/listaMaquinariasFragment"
+        android:name="com.example.promcosermobileapp.ui.ListaMaquinariasFragment"
+        android:label="listaMaquinariasFragment"
+        tools:layout="@layout/activity_lista_maquinarias_fragment" />
+
     <fragment
         android:id="@+id/nav_cliente"
         android:name="com.example.promcosermobileapp.ui.cliente.ClienteFragment"
         android:label="@string/menu_cliente"
         tools:layout="@layout/fragment_cliente" />
+
 </navigation>
