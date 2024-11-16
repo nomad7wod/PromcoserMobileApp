@@ -16,7 +16,7 @@ class MaquinariaAdapter(private val maquinariaList: List<Maquinaria>) :
     // Clase interna para el ViewHolder
     inner class MaquinariaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvModeloMarca: TextView = itemView.findViewById(R.id.tvModeloMarca)
-        val tvPlaca: TextView = itemView.findViewById(R.id.tvPlaca)
+        val tvPlaca: TextView = itemView.findViewById(R.id.tvRegPlaca)
         val tvHorometro: TextView = itemView.findViewById(R.id.tvHorometro)
         val tvAnoCompra: TextView = itemView.findViewById(R.id.tvAnoCompra)
         val tvEstado: TextView = itemView.findViewById(R.id.tvEstado)

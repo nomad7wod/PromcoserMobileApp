@@ -26,7 +26,7 @@
 
         <!-- Placa -->
         <TextView
-            android:id="@+id/tvPlaca"
+            android:id="@+id/tvRegPlaca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Placa"
@@ -65,10 +65,10 @@
             android:id="@+id/btnDetalles"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@color/black"
             android:text="Detalles"
-            android:backgroundTint="@color/primaryColor"
-            android:textColor="@color/white"
-            android:layout_gravity="end" />
+            android:textColor="@color/white" />
 
         <!-- Layout para Detalles Recientes -->
         <LinearLayout

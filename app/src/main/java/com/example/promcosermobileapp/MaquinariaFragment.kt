@@ -27,10 +27,10 @@ class MaquinariaFragment : Fragment() {
         btnVerMaquinarias = view.findViewById(R.id.btnVerMaquinarias)
 
         // Configurar el listener del botón
-        btnVerMaquinarias.setOnClickListener {
+        //btnVerMaquinarias.setOnClickListener {
             // Navegar al fragmento de lista de maquinarias
-            findNavController().navigate(R.id.action_maquinariaFragment_to_listaMaquinariasFragment)
-        }
+          //  findNavController().navigate(R.id.action_maquinariaFragment_to_listaMaquinariasFragment)
+        //}
 
         return view
     }
