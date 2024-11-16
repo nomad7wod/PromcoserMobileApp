@@ -8,11 +8,49 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Login -->
+    <string name="valLogo">Logo</string>
+    <string name="valTituloLogin">INICIAR SESIÓN</string>
+    <string name="valHintCorreo">Correo</string>
+    <string name="valHintPassword">Contraseña</string>
+    <string name="valAcceder">ACCEDER</string>
+    <string name="valRegistro">REGISTRARME</string>
+
     <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_personal">Personal</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="valMaquinaria">Maquinaria</string>
-    <color name="primaryColor">#6200EE</color> <!-- Puedes cambiar este valor -->
+    <string name="tituloPersonalFragment">Registro de Personal</string>
+    <string name="txtnombre">Nombre Completo</string>
+    <string name="txtapellidos">Apellidos</string>
+    <string name="valHintapellidos">Apellidos</string>
+    <string name="valrol">Rol</string>
+    <string name="txtphonenumber">Numero de telefono</string>
+    <string name="valemail">Email</string>
+    <string name="valnumeroDni">Dni</string>
+    <string name="txtEstado">Estado</string>
+    <string name="txtrgactivo">Activo</string>
+    <string name="txtnoactivo">No Activo</string>
+    <string name="txtañonacimiento">Fecha de Nacimiento</string>
+    <string name="txtUbicacion">Ubicacion</string>
+    <string name="valUsernametext">Usuario</string>
+    <string name="txtpassword">Contraseña</string>
+    <string name="txtabuttonregister">Registrar Personal</string>
+    <string name="tituloClienteFragment">Registro de Cliente</string>
+    <string name="tipoCliente">Tipo de Cliente</string>
+    <string name="razonSocial">Razon Social</string>
+    <string name="ruc">RUC</string>
+    <string name="direccion">Direccion</string>
+    <string name="Cliente">menu_cliente</string>
+    <string name="menu_cliente">Cliente</string>
+    <string name="valbtnregcliente">Registrar Cliente</string>
+    <string name="titleFragHistorialCliente">Historial de clientes</string>
+    <string name="txtBuscar">Buscar...</string>
+    <string name="subTitleDNI">DNI: </string>
+    <string name="subTitleApellidos">Apellidos: </string>
+    <string name="subTitleNombres">Nombres: </string>
+    <string name="subTitleRUC">RUC: </string>
+    <string name="btnDetalles">Mas detalles</string>
 </resources>
