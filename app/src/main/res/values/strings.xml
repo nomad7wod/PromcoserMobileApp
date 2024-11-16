@@ -46,4 +46,5 @@
     <string name="Cliente">menu_cliente</string>
     <string name="menu_cliente">Cliente</string>
     <string name="valbtnregcliente">Registrar Cliente</string>
+    <string name="valetingresarnombrempleado">Ingrese nombre del empleado</string>
 </resources>
