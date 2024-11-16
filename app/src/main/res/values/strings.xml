@@ -47,4 +47,11 @@
     <string name="menu_cliente">Cliente</string>
     <string name="valbtnregcliente">Registrar Cliente</string>
     <string name="valetingresarnombrempleado">Ingrese nombre del empleado</string>
+    <string name="titleFragHistorialCliente">Historial de clientes</string>
+    <string name="txtBuscar">Buscar...</string>
+    <string name="subTitleDNI">DNI: </string>
+    <string name="subTitleApellidos">Apellidos: </string>
+    <string name="subTitleNombres">Nombres: </string>
+    <string name="subTitleRUC">RUC: </string>
+    <string name="btnDetalles">Mas detalles</string>
 </resources>
