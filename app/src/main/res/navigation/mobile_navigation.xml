@@ -38,5 +38,10 @@
         android:name="com.example.promcosermobileapp.ui.cliente.ClienteFragment"
         android:label="@string/menu_cliente"
         tools:layout="@layout/fragment_cliente" />
+    <fragment
+        android:id="@+id/personalApiFragment"
+        android:name="com.example.promcosermobileapp.PersonalApiFragment"
+        android:label="fragment_personal_api"
+        tools:layout="@layout/fragment_personal_api" />
 
 </navigation>

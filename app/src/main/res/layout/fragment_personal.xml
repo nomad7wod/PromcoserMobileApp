@@ -231,6 +231,12 @@
                 android:layout_height="wrap_content"
                 android:text="@string/txtabuttonregister" />
 
+            <Button
+                android:id="@+id/btnhistorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txthist" />
+
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -54,4 +54,5 @@
     <string name="subTitleNombres">Nombres: </string>
     <string name="subTitleRUC">RUC: </string>
     <string name="btnDetalles">Mas detalles</string>
+    <string name="txthist">Historial</string>
 </resources>
