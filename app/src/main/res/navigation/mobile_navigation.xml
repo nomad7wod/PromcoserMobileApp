@@ -41,7 +41,7 @@
     <fragment
         android:id="@+id/personalApiFragment"
         android:name="com.example.promcosermobileapp.PersonalApiFragment"
-        android:label="fragment_personal_api"
+        android:label="Historial Personal"
         tools:layout="@layout/fragment_personal_api" />
     <fragment
         android:id="@+id/historialClienteFragment"
