@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".ui.cliente.ClienteFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,44 +15,46 @@
             android:id="@+id/textViewTitulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="24dp"
             android:text="@string/tituloClienteFragment"
-            android:textSize="34sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="409dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginTop="16dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitulo"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitulo">
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <!-- Tipo de Cliente -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tipoCliente" />
+                android:text="@string/tipoCliente"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
 
             <Spinner
                 android:id="@+id/spTipoCliente"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp" />
+                android:layout_height="wrap_content" />
 
+            <!-- Nombre -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txtnombre" />
+                android:text="@string/txtnombre"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -64,10 +67,14 @@
                     android:hint="@string/txtnombre" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Apellidos -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txtapellidos" />
+                android:text="@string/txtapellidos"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -80,10 +87,14 @@
                     android:hint="@string/txtapellidos" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- DNI -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/valnumeroDni" />
+                android:text="@string/valnumeroDni"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -96,10 +107,14 @@
                     android:hint="@string/valnumeroDni" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Razón Social -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/razonSocial" />
+                android:text="@string/razonSocial"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -112,10 +127,14 @@
                     android:hint="@string/razonSocial" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- RUC -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ruc" />
+                android:text="@string/ruc"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -128,10 +147,14 @@
                     android:hint="@string/ruc" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Teléfono -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txtphonenumber" />
+                android:text="@string/txtphonenumber"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -144,10 +167,14 @@
                     android:hint="@string/txtphonenumber" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Email -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/valemail" />
+                android:text="@string/valemail"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -160,10 +187,14 @@
                     android:hint="@string/valemail" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Dirección -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/direccion" />
+                android:text="@string/direccion"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -176,16 +207,20 @@
                     android:hint="@string/direccion" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Estado -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txtEstado" />
+                android:text="@string/txtEstado"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp" />
 
             <RadioGroup
                 android:id="@+id/rgEstadoCliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
 
                 <RadioButton
                     android:id="@+id/rbActivoCliente"
@@ -198,20 +233,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/txtnoactivo" />
-
             </RadioGroup>
 
+            <!-- Botones -->
             <Button
                 android:id="@+id/btnRegistrarCliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/valbtnregcliente" />
+                android:text="@string/valbtnregcliente"
+                android:layout_marginTop="24dp"
+
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/btnhistorialCliente"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txthist" />
+                android:text="@string/valbtnhistcliente"
+                android:layout_marginTop="16dp"
+
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

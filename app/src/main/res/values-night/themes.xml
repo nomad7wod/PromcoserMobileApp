@@ -7,5 +7,6 @@
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorButtonNormal">@color/colorButton</item> <!-- Botones -->
+
     </style>
 </resources>

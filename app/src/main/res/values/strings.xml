@@ -55,4 +55,6 @@
     <string name="subTitleRUC">RUC: </string>
     <string name="btnDetalles">Mas detalles</string>
     <string name="txthist">Historial</string>
+    <string name="logo_promcoser">imgValue</string>
+    <string name="valbtnhistcliente">Historial Clientes</string>
 </resources>

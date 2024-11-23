@@ -6,17 +6,203 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/text_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Logo y título -->
+    <ImageView
+        android:id="@+id/imgLogoPromcoser"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/logo_promcoser"
+        android:src="@drawable/titulo_fondo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTituloParte"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="PARTE DIARIO DE MÁQUINA"
+        android:textColor="@color/design_default_color_primary_dark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgLogoPromcoser"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSerie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="SERIE 001-"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintStart_toStartOf="@id/tvTituloParte"
+        app:layout_constraintTop_toBottomOf="@id/tvTituloParte" />
+
+    <TextView
+        android:id="@+id/tvNumero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="N° 000963"
+        android:textColor="#FF4500"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvSerie"
+        app:layout_constraintStart_toEndOf="@id/tvSerie" />
+
+    <!-- Campos de entrada agrupados -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/tvSerie"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <EditText
+            android:id="@+id/etCliente"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CLIENTE:"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etLugarTrabajo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="LUGAR DE TRABAJO:"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etOperador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="OPERADOR:"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etFecha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="FECHA:"
+            android:inputType="date"
+            android:minHeight="48dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etPlaca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="PLACA:"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvHorometro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="HORÓMETRO"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etHorometroInicio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="INICIO:"
+            android:inputType="numberDecimal"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etHorometroFinal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="FINAL:"
+            android:inputType="numberDecimal"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etFirmaControlador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="FIRMA CONTROLADOR:"
+            android:inputType="text"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etFirmaOperador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="FIRMA OPERADOR:"
+            android:inputType="text"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etFirmaIngeniero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="FIRMA INGENIERO:"
+            android:inputType="text"
+            android:background="@android:drawable/editbox_background_normal"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Botón de guardar -->
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="16dp"
+        android:text="Guardar"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
