@@ -43,5 +43,10 @@
         android:name="com.example.promcosermobileapp.PersonalApiFragment"
         android:label="fragment_personal_api"
         tools:layout="@layout/fragment_personal_api" />
+    <fragment
+        android:id="@+id/historialClienteFragment"
+        android:name="com.example.promcosermobileapp.HistorialClienteFragment"
+        android:label="fragment_historial_cliente"
+        tools:layout="@layout/fragment_historial_cliente" />
 
 </navigation>

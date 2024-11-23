@@ -52,6 +52,15 @@ class ClienteFragment : Fragment() {
     ): View {
         val view: View = inflater.inflate(R.layout.fragment_cliente, container, false)
 
+        val btnhist: Button = view.findViewById(R.id.btnhistorialCliente)
+        val navController = findNavController()
+        btnhist.setOnClickListener {
+            navController.navigate(R.id.historialClienteFragment)
+        }
+
+
+
+
         // Observa el resultado de createCliente
         viewModel.clienteList.observe(viewLifecycleOwner) { isSuccessful ->
             if (isSuccessful) {
