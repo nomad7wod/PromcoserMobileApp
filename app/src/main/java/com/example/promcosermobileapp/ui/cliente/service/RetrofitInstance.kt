@@ -1,4 +1,4 @@
-package com.example.promcosermobileapp.ui.personal.service
+package com.example.promcosermobileapp.ui.cliente.service
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -13,8 +13,8 @@ object RetrofitInstance {
             .build()
 
     }
-    val api: PersonalApiService by lazy {
-        retrofit.create(PersonalApiService::class.java)
+    val api: ClienteApiService by lazy {
+        retrofit.create(ClienteApiService::class.java)
     }
 
 }

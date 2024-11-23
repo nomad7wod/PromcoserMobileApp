@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.promcosermobileapp.MainActivity
 import com.example.promcosermobileapp.NavigationPromcoserActivity
 import com.example.promcosermobileapp.R
-import com.example.promcosermobileapp.ui.cliente.ClienteFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
