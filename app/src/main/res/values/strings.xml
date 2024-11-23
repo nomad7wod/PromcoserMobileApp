@@ -49,12 +49,21 @@
     <string name="valetingresarnombrempleado">Buscar...</string>
     <string name="titleFragHistorialCliente">Historial de clientes</string>
     <string name="txtBuscar">Buscar...</string>
-    <string name="subTitleDNI">DNI: </string>
-    <string name="subTitleApellidos">Apellidos: </string>
-    <string name="subTitleNombres">Nombres: </string>
-    <string name="subTitleRUC">RUC: </string>
+    <string name="subTitleDNI">DNI:</string>
+    <string name="subTitleApellidos">Apellidos:</string>
+    <string name="subTitleNombres">Nombres:</string>
+    <string name="subTitleRUC">RUC:</string>
     <string name="btnDetalles">Mas detalles</string>
     <string name="txthist">Historial</string>
     <string name="logo_promcoser">imgValue</string>
     <string name="valbtnhistcliente">Historial Clientes</string>
+    <string name="titleDetalle">Detalles</string>
+    <string name="btnMoreDetailsBack">Regresar</string>
+    <string name="moreDetailsIDC">"ID:"</string>
+    <string name="moreDetailsTypeC">"Tipo de cliente:"</string>
+    <string name="moreDetailsPhoneC">"Telefono:"</string>
+    <string name="moreDetailsMailC">"Correo:"</string>
+    <string name="moreDetailsAddressC">"Direccion:"</string>
+    <string name="moreDetailsStatusC">"Estado:"</string>
+    <string name="moreDetailsSocialReasonC">Razon social:</string>
 </resources>
