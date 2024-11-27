@@ -76,11 +76,13 @@ class PersonalViewModel : ViewModel() {
                 response: retrofit2.Response<PersonalModel>
             ) {
                 if (response.isSuccessful) {
+                    Log.d("CreatePersonal", "Registro exitoso: ${response.body()}")
                     _personalList.value = true
                 }
             }
 
             override fun onFailure(call: Call<PersonalModel>, t: Throwable) {
+                    Log.e("CreatePersonal", "Error en el registro: ${t.message}")
                 _personalList.value = false
             }
         })
