@@ -1,259 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".ui.cliente.ClienteFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/textViewTitulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="@string/tituloClienteFragment"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical"
-            app:layout_constraintTop_toBottomOf="@id/textViewTitulo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <!-- Tipo de Cliente -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/tipoCliente"
-                android:textStyle="bold"
-                android:layout_marginBottom="8dp" />
-
-            <Spinner
-                android:id="@+id/spTipoCliente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <!-- Nombre -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txtnombre"
-                android:textStyle="bold"
+            <!-- Logo y título -->
+            <ImageView
+                android:id="@+id/imgLogoPromcoser"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
+                android:contentDescription="@string/logo_promcoser"
+                android:src="@drawable/titulo_fondo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textViewTitulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@string/tituloClienteFragment"
+                android:textColor="@color/design_default_color_primary_dark"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgLogoPromcoser"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etNombreCliente"
+            <!-- Campos de entrada agrupados -->
+            <LinearLayout
+                android:id="@+id/llFormContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitulo"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Tipo de Cliente -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/txtnombre" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@string/tipoCliente"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"/>
 
-            <!-- Apellidos -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txtapellidos"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etApellidoCliente"
+                <Spinner
+                    android:id="@+id/spTipoCliente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/txtapellidos" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:minHeight="48dp"
+                    android:layout_marginTop="8dp" />
 
-            <!-- DNI -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/valnumeroDni"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDniCliente"
+                <!-- Nombre -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/valnumeroDni" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@string/txtnombre"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
 
-            <!-- Razón Social -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/razonSocial"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etRazonSocial"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/razonSocial" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="8dp">
 
-            <!-- RUC -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ruc"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNombreCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/txtnombre" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etRuc"
+                <!-- Apellidos -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/ruc" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@string/txtapellidos"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
 
-            <!-- Teléfono -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txtphonenumber"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etTelefonoCliente"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/txtphonenumber" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="8dp">
 
-            <!-- Email -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/valemail"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etApellidoCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/txtapellidos" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etCorreoCliente"
+                <!-- DNI -->
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/valemail" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:text="@string/valnumeroDni"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
 
-            <!-- Dirección -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/direccion"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etDireccionCliente"
+                <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/direccion" />
-            </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginTop="8dp">
 
-            <!-- Estado -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/txtEstado"
-                android:textStyle="bold"
-                android:layout_marginTop="16dp" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDniCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/valnumeroDni" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-            <RadioGroup
-                android:id="@+id/rgEstadoCliente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
-
-                <RadioButton
-                    android:id="@+id/rbActivoCliente"
-                    android:layout_width="wrap_content"
+                <!-- Razón Social -->
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/txtrgactivo" />
+                    android:text="@string/razonSocial"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
 
-                <RadioButton
-                    android:id="@+id/rbNoActivoCliente"
-                    android:layout_width="wrap_content"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/txtnoactivo" />
-            </RadioGroup>
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRazonSocial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/razonSocial" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- RUC -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ruc"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRuc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ruc" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Teléfono -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtphonenumber"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etTelefonoCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/txtphonenumber" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Email -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/valemail"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCorreoCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/valemail" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Dirección -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/direccion"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etDireccionCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/direccion" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Estado -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txtEstado"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <RadioGroup
+                    android:id="@+id/rgEstadoCliente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp">
+
+                    <RadioButton
+                        android:id="@+id/rbActivoCliente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtrgactivo" />
+
+                    <RadioButton
+                        android:id="@+id/rbNoActivoCliente"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/txtnoactivo" />
+                </RadioGroup>
+
+            </LinearLayout>
 
             <!-- Botones -->
             <Button
                 android:id="@+id/btnRegistrarCliente"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/valbtnregcliente"
-                android:layout_marginTop="24dp"
-
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/llFormContent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <Button
                 android:id="@+id/btnhistorialCliente"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/valbtnhistcliente"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/valbtnhistcliente"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/btnRegistrarCliente"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-                android:textColor="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
