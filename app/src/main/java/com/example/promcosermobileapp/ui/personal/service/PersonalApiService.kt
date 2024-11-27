@@ -11,7 +11,7 @@ import retrofit2.http.POST
 interface PersonalApiService {
     @GET("RolsConS")
     fun getRoles(): Call<List<rolmodel>>
-    @GET("Ubigeos")
+    @GET("UbigeosConS")
     fun getUbigeo(): Call<List<Ubigeomodel>>
     @POST("Personal")
     fun createPersonal(@Body personal: PersonalModel): Call<PersonalModel>
