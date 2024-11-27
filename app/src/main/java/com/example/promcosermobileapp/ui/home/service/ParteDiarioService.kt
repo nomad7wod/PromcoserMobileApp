@@ -16,7 +16,7 @@ interface ParteDiarioService {
     fun createParteDiario(@Body parteDiario: ParteDiarioModel): Call<ParteDiarioModel>
     @GET("Clientes")
     fun getCliente(): Call<List<ClienteModel>>
-    @GET("Maquinarias")
+    @GET("Maquinaria")
     fun getMaquinaria(): Call<List<MaquinariaModel>>
     @GET("Personal")
     fun getPersonal(): Call<List<PersonalModel>>
