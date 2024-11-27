@@ -13,6 +13,8 @@ interface PersonalApiService {
     fun getRoles(): Call<List<rolmodel>>
     @GET("UbigeosConS")
     fun getUbigeo(): Call<List<Ubigeomodel>>
+    @GET("Personal")
+    fun getPersonal(): Call<List<PersonalModel>>
     @POST("Personal")
     fun createPersonal(@Body personal: PersonalModel): Call<PersonalModel>
 

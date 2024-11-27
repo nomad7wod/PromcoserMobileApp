@@ -1,9 +1,10 @@
 package com.example.promcosermobileapp.ui.personal.model
 
+import com.google.gson.annotations.SerializedName
 import java.sql.Date
 
 data class PersonalModel(
-    //val id_personal: Int,
+    @SerializedName("idPersonal")val id_personal: Int? = null,
     val nombre: String,
     val apellido: String,
     val id_rol: Int,
