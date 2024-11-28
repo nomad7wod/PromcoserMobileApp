@@ -36,14 +36,15 @@
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:ignore="Autofill,VisualLintTextFieldSize" />
 
-    <ListView
-        android:id="@+id/lvClientes"
-        android:layout_width="0dp"
-        android:layout_height="633dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHistorialClientes"
+        android:layout_width="409dp"
+        android:layout_height="630dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etBuscar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
