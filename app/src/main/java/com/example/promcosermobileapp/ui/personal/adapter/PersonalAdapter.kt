@@ -8,11 +8,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promcosermobileapp.R
 import com.example.promcosermobileapp.ui.personal.model.PersonalModel
+import com.example.promcosermobileapp.ui.personal.model.rolmodel
 
-class PersonalAdapter(private var lstPersonal: List<PersonalModel>) :
-    RecyclerView.Adapter<PersonalAdapter.ViewHolder>() {
+class PersonalAdapter(
+    private var lstPersonal: List<PersonalModel>,
+    private var lstRoles: List<rolmodel> // Lista de roles
+) : RecyclerView.Adapter<PersonalAdapter.ViewHolder>() {
 
-    // Clase interna para manejar las vistas de cada ítem
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvDNIPersonal = itemView.findViewById<TextView>(R.id.tvDNIPersonal)
         val tvApellidosPersonal = itemView.findViewById<TextView>(R.id.tvApellidosPersonal)
@@ -24,32 +26,40 @@ class PersonalAdapter(private var lstPersonal: List<PersonalModel>) :
         val tvEmailPersonal = itemView.findViewById<TextView>(R.id.tvEmailPersonal)
     }
 
-    // Crear las vistas para cada ítem
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return ViewHolder(layoutInflater.inflate(R.layout.item_personal, parent, false))
     }
 
-    // Obtener el tamaño de la lista
     override fun getItemCount(): Int = lstPersonal.size
 
-    // Asignar valores a los elementos del diseño
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemPersonal = lstPersonal[position]
 
         holder.tvNombrePersonal.text = itemPersonal.nombre
         holder.tvApellidosPersonal.text = itemPersonal.apellido
         holder.tvDNIPersonal.text = itemPersonal.dni
-        holder.tvRol.text = "Rol ID: ${itemPersonal.id_rol}" // Puedes traducir el ID a un nombre si tienes un mapa de roles
-        holder.tvEstadoPersonal.text = if (itemPersonal.estado) "Activo" else "Inactivo"
-        holder.tvFechaPersonal.text = itemPersonal.fech_nacimiento.toString() // Formatea la fecha si es necesario
+        holder.tvRol.text = getRolName(itemPersonal.idRol)
+        holder.tvEstadoPersonal.text = if (itemPersonal.Estado) "Activo" else "Inactivo"
+        holder.tvFechaPersonal.text = itemPersonal.fechNacimiento.toString()
         holder.tvNumeroPersonal.text = itemPersonal.telefono
         holder.tvEmailPersonal.text = itemPersonal.correo
     }
 
-    // Método para actualizar la lista de datos en el adaptador
     fun updatePersonal(newPersonalList: List<PersonalModel>) {
         lstPersonal = newPersonalList
-        notifyDataSetChanged() // Notifica a RecyclerView que los datos han cambiado
+        notifyDataSetChanged()
+    }
+
+    fun updateRoles(newRolesList: List<rolmodel>) {
+        lstRoles = newRolesList
+        notifyDataSetChanged()
+    }
+
+    // Método para obtener el nombre del rol a partir del ID de rol
+    private fun getRolName(rolId: Int): String {
+        val rol = lstRoles.find { it.idRol == rolId }
+        return rol?.descripcion ?: "Desconocido"  // Si no encuentra el rol, devuelve Desconocido
     }
 }
+
