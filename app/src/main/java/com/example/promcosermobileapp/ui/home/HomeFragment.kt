@@ -115,19 +115,31 @@ class HomeFragment : Fragment() {
         }
     }
 
+
+
+
+
+
     private fun setupButton() {
         binding.btnGuardar.setOnClickListener {
-            // Handle button click
-            // You can access other views like this:
-            // val horometroInicio = binding.etHorometroInicio.text.toString()
-            // val horometroFinal = binding.etHorometroFinal.text.toString()
-            // val petroleo = binding.etPetroleo.text.toString()
-            // val aceite = binding.etAceite.text.toString()
-            // val firmaControlador = binding.checkBoxFirmaControlador.isChecked
-            // val firmaOperador = binding.checkBoxFirmaOperador.isChecked
-            // val firmaIngeniero = binding.checkBoxFirmaIngeniero.isChecked
+            val horometroInicio = binding.etHorometroInicio.text.toString()
+            val horometroFinal = binding.etHorometroFinal.text.toString()
+            val fecha = selectedDate?.let {
+                "${it.get(Calendar.DAY_OF_MONTH)}/${it.get(Calendar.MONTH) + 1}/${it.get(Calendar.YEAR)}"
+            } ?: "Fecha no seleccionada"
+
+            if (horometroInicio.isBlank() || horometroFinal.isBlank()) {
+                // Display error messages
+                binding.etHorometroInicio.error = "Campo obligatorio"
+                binding.etHorometroFinal.error = "Campo obligatorio"
+                return@setOnClickListener
+            }
+
+            Log.d("HomeFragment", "Horómetro inicio: $horometroInicio, final: $horometroFinal, fecha: $fecha")
+            // Handle other logic or send data to ViewModel
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
