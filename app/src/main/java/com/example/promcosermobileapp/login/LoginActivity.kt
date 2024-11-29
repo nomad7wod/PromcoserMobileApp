@@ -6,14 +6,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.promcosermobileapp.MainActivity
 import com.example.promcosermobileapp.NavigationPromcoserActivity
 import com.example.promcosermobileapp.R
-import com.example.promcosermobileapp.ui.cliente.ClienteFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
@@ -32,38 +29,55 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                login(email, password)
-            } else {
-                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
+
+            // Validación de campos
+            when {
+                email.isEmpty() || password.isEmpty() -> {
+                    Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
+                }
+                !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                    Toast.makeText(this, "Ingrese un correo electrónico válido", Toast.LENGTH_SHORT).show()
+                }
+                else -> login(email, password)
             }
         }
     }
 
     private fun login(email: String, password: String) {
         val loginRequest = LoginRequest(email, password)
-        if(email=="admin@gmail.com" && password=="12345"){
-            val intent = Intent(this@LoginActivity, NavigationPromcoserActivity::class.java)
-            startActivity(intent)
-            finish()
-        }else{
-            authService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    if (response.isSuccessful && response.body()?.success == true) {
-                        Toast.makeText(this@LoginActivity, "Login Exitoso", Toast.LENGTH_SHORT).show()
-                        // Aquí redirigo xd
-                        val intent = Intent(this@LoginActivity, NavigationPromcoserActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(this@LoginActivity, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show()
+
+        authService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                when {
+                    response.isSuccessful -> {
+                        val loginResponse = response.body()
+                        if (loginResponse?.success == true) {
+                            // Login exitoso
+                            Toast.makeText(this@LoginActivity, "Login Exitoso", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this@LoginActivity, NavigationPromcoserActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            // Credenciales incorrectas
+                            Toast.makeText(this@LoginActivity, loginResponse?.message ?: "Credenciales Incorrectas", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    response.code() == 404 -> {
+                        // Usuario no encontrado
+                        Toast.makeText(this@LoginActivity, "Usuario no encontrado. Verifique las credenciales.", Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        // Otros errores del servidor
+                        Toast.makeText(this@LoginActivity, "Error en la solicitud: ${response.message()}", Toast.LENGTH_SHORT).show()
                     }
                 }
+            }
 
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Toast.makeText(this@LoginActivity, "Error en la conexión", Toast.LENGTH_SHORT).show()
-                }
-            })
-        }
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                // Error de conexión
+                Toast.makeText(this@LoginActivity, "Error en la conexión: ${t.localizedMessage}", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
+

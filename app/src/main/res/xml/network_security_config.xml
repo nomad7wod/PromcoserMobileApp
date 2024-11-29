@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">04e0-2001-1388-ae1-a8c4-7466-7948-ce8e-d9e8</domain>
+    </domain-config>
+</network-security-config>
