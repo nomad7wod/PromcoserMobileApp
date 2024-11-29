@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promcosermobileapp.ui.cliente.adapter.ClienteAdapter
 import com.example.promcosermobileapp.ui.cliente.model.ClienteModel
@@ -18,7 +19,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class HistorialClienteFragment : Fragment() {
-    private var lstHistorialCliente = ArrayList<ClienteModel>()
+    private var lstClientes = listOf<ClienteModel>()
     private lateinit var etSearchCliente: EditText
     private lateinit var clienteAdapter: ClienteAdapter
 
@@ -29,8 +30,11 @@ class HistorialClienteFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_historial_cliente, container, false)
         val rvHistorialCliente = view.findViewById<RecyclerView>(R.id.rvHistorialClientes)
-        clienteAdapter = ClienteAdapter(lstHistorialCliente)
+        rvHistorialCliente.layoutManager = LinearLayoutManager(requireContext())
+
+        clienteAdapter = ClienteAdapter(lstClientes)
         rvHistorialCliente.adapter = clienteAdapter
+
         etSearchCliente = view.findViewById(R.id.etBuscar)
 
         etSearchCliente.addTextChangedListener(object : TextWatcher {
@@ -43,9 +47,6 @@ class HistorialClienteFragment : Fragment() {
 
         })
         loadHistorialCliente()
-
-
-
         return view
     }
     private fun loadHistorialCliente() {
@@ -57,8 +58,8 @@ class HistorialClienteFragment : Fragment() {
                 response: Response<List<ClienteModel>>
             ) {
                 if (response.isSuccessful) {
-                    lstHistorialCliente = response.body() as ArrayList<ClienteModel>
-                    clienteAdapter.updateCliente(lstHistorialCliente)
+                    lstClientes = response.body() as ArrayList<ClienteModel>
+                    clienteAdapter.updateCliente(lstClientes)
 
                 }
             }
@@ -70,7 +71,7 @@ class HistorialClienteFragment : Fragment() {
 
     }
     private fun filterClienteList(query: String) {
-        val filteredList = lstHistorialCliente.filter {
+        val filteredList = lstClientes.filter {
             it.nombre.contains(query, ignoreCase = true) || it.apellido.contains(query, ignoreCase = true)
         }
         clienteAdapter.updateCliente(filteredList)
