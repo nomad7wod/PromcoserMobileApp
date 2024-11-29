@@ -9,4 +9,6 @@
 
     <color name="colorAccent">#FF4081</color>  <!-- Rojo para acentos (botones, etc.) -->
     <color name="colorButton">#F44336</color>  <!-- Rojo para los botones -->
+    <color name="gray">#BDBDBD</color>
+
 </resources>

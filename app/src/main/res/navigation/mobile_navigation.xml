@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/listaMaquinariasFragment"
         android:name="com.example.promcosermobileapp.ui.ListaMaquinariasFragment"
-        android:label="listaMaquinariasFragment"
+        android:label="Historial de Maquinas"
         tools:layout="@layout/activity_lista_maquinarias_fragment" />
 
     <fragment

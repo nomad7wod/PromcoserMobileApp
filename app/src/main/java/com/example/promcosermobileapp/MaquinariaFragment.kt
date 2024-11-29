@@ -1,7 +1,7 @@
 package com.example.promcosermobileapp
 
 import Adapter.MaquinariaAdapter
-import Clases.Maquinaria
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

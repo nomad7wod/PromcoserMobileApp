@@ -1,7 +1,6 @@
 package com.example.promcosermobileapp.ui
 
 import Adapter.MaquinariaAdapter
-import Clases.Maquinaria
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.promcosermobileapp.R
+import com.example.promcosermobileapp.ui.home.model.Maquinaria
 
 class ListaMaquinariasFragment : Fragment() {
 
