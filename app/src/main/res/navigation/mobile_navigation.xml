@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/historialClienteFragment"
         android:name="com.example.promcosermobileapp.HistorialClienteFragment"
-        android:label="fragment_historial_cliente"
+        android:label="@string/titleFragHistorialCliente"
         tools:layout="@layout/fragment_historial_cliente" />
 
 </navigation>

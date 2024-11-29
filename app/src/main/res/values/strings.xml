@@ -66,4 +66,5 @@
     <string name="moreDetailsAddressC">"Direccion:"</string>
     <string name="moreDetailsStatusC">"Estado:"</string>
     <string name="moreDetailsSocialReasonC">Razon social:</string>
+    <string name="fhcTituloBuscar">Buscar cliente:</string>
 </resources>
