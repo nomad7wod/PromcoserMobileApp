@@ -145,6 +145,7 @@
                 android:text="@string/txtEstado" />
 
             <RadioGroup
+                android:id="@+id/rgestado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -175,9 +176,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:focusable="false"
                 android:hint="@string/txtañonacimiento"
                 android:inputType="date"
-                android:minHeight="48dp" />
+                android:minHeight="48dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             <TextView
                 android:layout_width="match_parent"

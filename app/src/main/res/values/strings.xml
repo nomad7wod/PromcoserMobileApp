@@ -3,7 +3,7 @@
     <string name="title_activity_navigation_promcoser">NavigationPromcoserActivity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Promcoser App</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
@@ -16,7 +16,7 @@
     <string name="valAcceder">ACCEDER</string>
     <string name="valRegistro">REGISTRARME</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_home">Parte Diario</string>
     <string name="menu_personal">Personal</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -46,13 +46,24 @@
     <string name="Cliente">menu_cliente</string>
     <string name="menu_cliente">Cliente</string>
     <string name="valbtnregcliente">Registrar Cliente</string>
-    <string name="valetingresarnombrempleado">Ingrese nombre del empleado</string>
+    <string name="valetingresarnombrempleado">Buscar...</string>
     <string name="titleFragHistorialCliente">Historial de clientes</string>
     <string name="txtBuscar">Buscar...</string>
-    <string name="subTitleDNI">DNI: </string>
-    <string name="subTitleApellidos">Apellidos: </string>
-    <string name="subTitleNombres">Nombres: </string>
-    <string name="subTitleRUC">RUC: </string>
+    <string name="subTitleDNI">DNI:</string>
+    <string name="subTitleApellidos">Apellidos:</string>
+    <string name="subTitleNombres">Nombres:</string>
+    <string name="subTitleRUC">RUC:</string>
     <string name="btnDetalles">Mas detalles</string>
     <string name="txthist">Historial</string>
+    <string name="logo_promcoser">imgValue</string>
+    <string name="valbtnhistcliente">Historial Clientes</string>
+    <string name="titleDetalle">Detalles</string>
+    <string name="btnMoreDetailsBack">Regresar</string>
+    <string name="moreDetailsIDC">"ID:"</string>
+    <string name="moreDetailsTypeC">"Tipo de cliente:"</string>
+    <string name="moreDetailsPhoneC">"Telefono:"</string>
+    <string name="moreDetailsMailC">"Correo:"</string>
+    <string name="moreDetailsAddressC">"Direccion:"</string>
+    <string name="moreDetailsStatusC">"Estado:"</string>
+    <string name="moreDetailsSocialReasonC">Razon social:</string>
 </resources>

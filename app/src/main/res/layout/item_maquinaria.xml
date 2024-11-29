@@ -19,35 +19,44 @@
             android:id="@+id/tvModeloMarca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Modelo/Marca"
+            android:text="Modelo / Marca"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="@color/black" />
 
         <!-- Placa -->
         <TextView
-            android:id="@+id/tvRegPlaca"
+            android:id="@+id/tvPlaca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Placa"
-            android:textSize="16sp"
-            android:textColor="@color/black" />
-
-        <!-- Horometro -->
-        <TextView
-            android:id="@+id/tvHorometro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Horómetro"
+            android:text="Placa: "
             android:textSize="16sp"
             android:textColor="@color/black" />
 
         <!-- Año de Compra -->
         <TextView
-            android:id="@+id/tvAnoCompra"
+            android:id="@+id/tvAnioCompra"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Año de Compra"
+            android:text="Año de Compra: "
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+        <!-- Horómetro Inicial -->
+        <TextView
+            android:id="@+id/tvHorometroCompra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horómetro (Compra): "
+            android:textSize="16sp"
+            android:textColor="@color/black" />
+
+        <!-- Horómetro Actual -->
+        <TextView
+            android:id="@+id/tvHorometroActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Horómetro (Actual): "
             android:textSize="16sp"
             android:textColor="@color/black" />
 
@@ -56,7 +65,7 @@
             android:id="@+id/tvEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Estado"
+            android:text="Estado: "
             android:textSize="16sp"
             android:textColor="@color/black" />
 
@@ -69,61 +78,6 @@
             android:backgroundTint="@color/black"
             android:text="Detalles"
             android:textColor="@color/white" />
-
-        <!-- Layout para Detalles Recientes -->
-        <LinearLayout
-            android:id="@+id/llDetallesRecientes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:visibility="gone"
-            android:paddingTop="8dp">
-
-            <!-- Fecha de Uso -->
-            <TextView
-                android:id="@+id/tvFechaUso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fecha de Uso"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
-
-            <!-- Horas de Uso -->
-            <TextView
-                android:id="@+id/tvHorasUso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Horas de Uso"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
-
-            <!-- Lugar de Trabajo -->
-            <TextView
-                android:id="@+id/tvLugarTrabajo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Lugar de Trabajo"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
-
-            <!-- Petróleo Usado -->
-            <TextView
-                android:id="@+id/tvPetroleoUsado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Petróleo Usado"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
-
-            <!-- Aceite Hidráulico -->
-            <TextView
-                android:id="@+id/tvAceiteHidraulico"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aceite Hidráulico"
-                android:textSize="14sp"
-                android:textColor="@color/black" />
-        </LinearLayout>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

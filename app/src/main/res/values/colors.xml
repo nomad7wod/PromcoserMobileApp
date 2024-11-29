@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <!-- Colores personalizados -->
+    <color name="colorPrimary">#2196F3</color>  <!-- Azul -->
+    <color name="colorPrimaryVariant">#1976D2</color>  <!-- Azul más oscuro -->
+    <color name="colorOnPrimary">#FFFFFF</color>  <!-- Blanco para el texto sobre el color primario -->
+
+    <color name="colorAccent">#FF4081</color>  <!-- Rojo para acentos (botones, etc.) -->
+    <color name="colorButton">#F44336</color>  <!-- Rojo para los botones -->
+    <color name="gray">#BDBDBD</color>
+
 </resources>
