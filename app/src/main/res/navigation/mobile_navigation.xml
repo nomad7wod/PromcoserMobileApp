@@ -48,5 +48,10 @@
         android:name="com.example.promcosermobileapp.HistorialClienteFragment"
         android:label="fragment_historial_cliente"
         tools:layout="@layout/fragment_historial_cliente" />
+    <fragment
+        android:id="@+id/nav_detallepd"
+        android:name="com.example.promcosermobileapp.ui.home.DetalleParteDiarioFragment"
+        android:label="fragment_detalle_parte_diario"
+        tools:layout="@layout/fragment_detalle_parte_diario" />
 
 </navigation>

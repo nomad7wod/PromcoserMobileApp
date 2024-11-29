@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.promcosermobileapp.R
 import com.example.promcosermobileapp.databinding.FragmentHomeBinding
 import java.util.Calendar
 
@@ -126,6 +127,8 @@ class HomeFragment : Fragment() {
             // val firmaControlador = binding.checkBoxFirmaControlador.isChecked
             // val firmaOperador = binding.checkBoxFirmaOperador.isChecked
             // val firmaIngeniero = binding.checkBoxFirmaIngeniero.isChecked
+            val bottomSheetFragment = DetalleParteDiarioFragment()
+            bottomSheetFragment.show(parentFragmentManager, "bottomSheetFragment")
         }
     }
 

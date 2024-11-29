@@ -66,4 +66,11 @@
     <string name="moreDetailsAddressC">"Direccion:"</string>
     <string name="moreDetailsStatusC">"Estado:"</string>
     <string name="moreDetailsSocialReasonC">Razon social:</string>
+    <string name="txtid" />
+    <string name="txtidpd">Parte Diario #</string>
+    <string name="txthoras">Horas</string>
+    <string name="valte">Trabajo Efectuado</string>
+    <string name="valdes">Descripcion</string>
+    <string name="text2">Trabajo\nEfectuado</string>
+    <string name="valtextbdpd">Guardar detalle</string>
 </resources>
