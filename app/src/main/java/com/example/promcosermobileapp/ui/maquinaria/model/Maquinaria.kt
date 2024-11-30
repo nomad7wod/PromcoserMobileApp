@@ -1,9 +1,8 @@
 package com.example.promcosermobileapp.ui.home.model
 
 class Maquinaria (
-    val idMaquinaria: Int,
-    val placa: String,
     val modelo: String,
+    val placa: String,
     val marca: String,
     val anioCompra: Int,
     val horometroCompra: Float,

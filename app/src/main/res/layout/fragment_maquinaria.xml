@@ -33,7 +33,7 @@
         android:text="Ver Lista de Maquinarias"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegEstado"
+        app:layout_constraintTop_toBottomOf="@+id/rgMaquinariaEstado"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -143,21 +143,33 @@
         app:layout_constraintTop_toBottomOf="@+id/tvRegHorometroInicio"
         tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/etRegEstado"
+    <RadioGroup
+        android:id="@+id/rgMaquinariaEstado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-        android:ems="10"
-        android:hint="Ingresar el estado"
-        android:inputType="text"
-        android:minHeight="48dp"
+        android:orientation="horizontal"
+        android:verticalScrollbarPosition="defaultPosition"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRegEstado" />
+        app:layout_constraintTop_toBottomOf="@+id/tvRegEstado">
+
+        <RadioButton
+            android:id="@+id/rbMaquinariaActiva"
+            android:layout_width="203dp"
+            android:layout_height="wrap_content"
+            android:text="Activa" />
+
+        <RadioButton
+            android:id="@+id/rbMaquinariaInactiva"
+            android:layout_width="208dp"
+            android:layout_height="wrap_content"
+            android:text="Inactiva" />
+
+    </RadioGroup>
+
 
     <TextView
         android:id="@+id/tvRegAnioCompra"
@@ -208,7 +220,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnVerMaquinarias"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etRegEstado" />
+        app:layout_constraintTop_toBottomOf="@+id/rgMaquinariaEstado" />
 
     <TextView
         android:id="@+id/tvRegistroHorometroActual"
@@ -230,6 +242,7 @@
         android:ems="10"
         android:hint="Ingrese el horómetro actual"
         android:inputType="text"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvRegistroHorometroActual" />
