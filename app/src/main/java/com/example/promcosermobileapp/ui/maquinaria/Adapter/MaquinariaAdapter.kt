@@ -39,7 +39,7 @@ class MaquinariaAdapter(
         holder.tvAnioCompra.text = "Año de Compra: ${maquinaria.anioCompra}"
         holder.tvHorometroCompra.text = "Horómetro (Compra): ${maquinaria.horometroCompra}"
         holder.tvHorometroActual.text = "Horómetro (Actual): ${maquinaria.horometroActual}"
-        holder.tvEstado.text = if (maquinaria.estado) "Activo" else "Inactivo"
+        holder.tvEstado.text = if (maquinaria.estado) "Activa" else "Inactiva"
     }
 
     // Método para actualizar la lista de maquinarias
