@@ -36,6 +36,13 @@ class LoginActivity : AppCompatActivity() {
             val password = etPassword.text.toString().trim()
 
             if (validateInputs(email, password)) {
+                if (email == "admin@gmail.com" && password == "12345") {
+                    Toast.makeText(this, "Bienvenido, Administrador", Toast.LENGTH_SHORT).show()
+                    navigateToHome()
+                } else {
+                    // Si no son las credenciales predefinidas, proceder al login normal
+                    login(email, password)
+                }
                 login(email, password)
             }
         }
