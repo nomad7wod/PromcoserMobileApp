@@ -15,6 +15,7 @@ class ClienteAdapter(
         val tvNombreCliente = itemView.findViewById<TextView>(R.id.tvNombres)
         val tvApellidoCliente = itemView.findViewById<TextView>(R.id.tvApellidos)
         val tvDniCliente = itemView.findViewById<TextView>(R.id.tvDNI)
+        val tvRUC = itemView.findViewById<TextView>(R.id.tvRUC)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -26,9 +27,11 @@ class ClienteAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemCliente = lstclientes[position]
+        // Configurar los elementos de la vista con los datos del cliente
         holder.tvNombreCliente.text = itemCliente.nombre
         holder.tvApellidoCliente.text = itemCliente.apellido
         holder.tvDniCliente.text = itemCliente.dni
+        holder.tvRUC.text = itemCliente.ruc
 
     }
 
