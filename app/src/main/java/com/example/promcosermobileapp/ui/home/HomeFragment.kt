@@ -6,10 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.RadioGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.example.promcosermobileapp.R
 import com.example.promcosermobileapp.databinding.FragmentHomeBinding
+import com.example.promcosermobileapp.ui.home.model.ParteDiarioModel
 import java.util.Calendar
 
 class HomeFragment : Fragment() {
@@ -19,8 +23,7 @@ class HomeFragment : Fragment() {
     private var selectedDate: Calendar? = null
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -33,6 +36,15 @@ class HomeFragment : Fragment() {
         setupSpinners()
         setupDatePicker()
         setupButton()
+
+        // Observa el resultado de la creación del parte diario
+        viewModel.parteDiarioList.observe(viewLifecycleOwner) { success ->
+            if (success) {
+                Toast.makeText(context, "Parte Diario guardado exitosamente", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Error al guardar el Parte Diario", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun setupSpinners() {
@@ -47,10 +59,7 @@ class HomeFragment : Fragment() {
                 )
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerCliente.adapter = adapter
-                Log.d("Spinner", "Clientes cargados: $clienteNames")
             } else {
-                Log.e("Spinner", "Lista de clientes vacía")
-                // Optionally, set a default "empty" adapter
                 binding.spinnerCliente.adapter = ArrayAdapter(
                     requireContext(),
                     android.R.layout.simple_spinner_item,
@@ -71,9 +80,7 @@ class HomeFragment : Fragment() {
                 )
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerOperador.adapter = adapter
-                Log.d("Spinner", "Personal cargados: $personalNames")
             } else {
-                Log.e("Spinner", "Lista de personal vacía")
                 binding.spinnerOperador.adapter = ArrayAdapter(
                     requireContext(),
                     android.R.layout.simple_spinner_item,
@@ -94,9 +101,7 @@ class HomeFragment : Fragment() {
                 )
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 binding.spinnerPlaca.adapter = adapter
-                Log.d("Spinner", "Maquinaria cargados: $maquinariaPlacas")
             } else {
-                Log.e("Spinner", "Lista de maquinaria vacía")
                 binding.spinnerPlaca.adapter = ArrayAdapter(
                     requireContext(),
                     android.R.layout.simple_spinner_item,
@@ -115,8 +120,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-
-
     private fun setupButton() {
         binding.btnGuardar.setOnClickListener {
             val horometroInicio = binding.etHorometroInicio.text.toString()
@@ -124,22 +127,49 @@ class HomeFragment : Fragment() {
             val fecha = selectedDate?.let {
                 "${it.get(Calendar.DAY_OF_MONTH)}/${it.get(Calendar.MONTH) + 1}/${it.get(Calendar.YEAR)}"
             } ?: "Fecha no seleccionada"
+            val fechamantenimiento = selectedDate?.let {
+                "${it.get(Calendar.DAY_OF_MONTH)}/${it.get(Calendar.MONTH) + 1}/${it.get(Calendar.YEAR)}"
+            } ?: "Fecha no seleccionada"
 
-            if (horometroInicio.isBlank() || horometroFinal.isBlank()) {
-                // Display error messages
-                binding.etHorometroInicio.error = "Campo obligatorio"
-                binding.etHorometroFinal.error = "Campo obligatorio"
+            // Validaciones
+            if (horometroInicio.isBlank() || horometroFinal.isBlank() || fecha == "Fecha no seleccionada") {
+                if (horometroInicio.isBlank()) binding.etHorometroInicio.error = "Campo obligatorio"
+                if (horometroFinal.isBlank()) binding.etHorometroFinal.error = "Campo obligatorio"
+                if (fecha == "Fecha no seleccionada") {
+                    Toast.makeText(context, "Debe seleccionar una fecha", Toast.LENGTH_SHORT).show()
+                }
                 return@setOnClickListener
             }
 
-            Log.d("HomeFragment", "Horómetro inicio: $horometroInicio, final: $horometroFinal, fecha: $fecha")
-            // Handle other logic or send data to ViewModel
+            // Obtener datos seleccionados
+            val idCliente = binding.spinnerCliente.selectedItemPosition // Asumiendo que el ID es el índice
+            val idPersonal = binding.spinnerOperador.selectedItemPosition // Lo mismo para el personal
+            val idMaquinaria = binding.spinnerPlaca.selectedItemPosition // Lo mismo para maquinaria
+
+            // Crear el objeto ParteDiario
+            val parteDiario = ParteDiarioModel(
+                fecha = fecha,
+                firmas = true, // Suponiendo que el parte diario tiene una firma
+                horometroInicio = horometroInicio.toDouble(),
+                horometroFinal = horometroFinal.toDouble(),
+                idCliente = idCliente,
+                idPersonal = idPersonal,
+                idMaquinaria = idMaquinaria,
+                lugarTrabajo = binding.etLugarTrabajo.text.toString(),
+                petroleo = binding.etPetroleo.text.toString().toDouble(),
+                aceite = binding.etAceiteHidraulico.text.toString().toDouble(),
+                proximoMantenimiento = fechamantenimiento
+            )
+
+            // Llamar al ViewModel para guardar el Parte Diario
+            viewModel.createParteDiario(parteDiario)
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 }
+
+
