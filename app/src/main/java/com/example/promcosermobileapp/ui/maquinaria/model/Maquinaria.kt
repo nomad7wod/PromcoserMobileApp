@@ -6,7 +6,7 @@ class Maquinaria (
     val modelo: String,
     val marca: String,
     val anioCompra: Int,
-    val horometroCompra: Int,
-    val horometroActual: Int,
+    val horometroCompra: Float,
+    val horometroActual: Float,
     val estado: Boolean
 )
