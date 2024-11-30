@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
         // Setup Cliente Spinner
         viewModel.clientes.observe(viewLifecycleOwner) { clientes ->
             if (clientes.isNotEmpty()) {
-                val clienteNames = clientes.map { it.razonSocial ?: "Cliente sin nombre" }
+                val clienteNames = clientes.map { it.nombre ?: "Cliente sin nombre" }
                 val adapter = ArrayAdapter(
                     requireContext(),
                     android.R.layout.simple_spinner_item,
@@ -114,9 +114,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
-
-
 
 
 

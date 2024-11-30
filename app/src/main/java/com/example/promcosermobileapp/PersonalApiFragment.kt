@@ -22,10 +22,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class PersonalApiFragment : Fragment() {
-    private var lstPersonal = listOf<PersonalModel>()
-    private var lstRoles = listOf<rolmodel>()
+
     private lateinit var personalAdapter: PersonalAdapter
     private lateinit var etBuscarEmpleado: EditText
+    private var lstPersonal: List<PersonalModel> = emptyList() // Lista de empleados
+    private var lstRoles: List<rolmodel> = emptyList() // Lista de roles
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +41,7 @@ class PersonalApiFragment : Fragment() {
 
         etBuscarEmpleado = view.findViewById(R.id.etBuscarEmpleado)
 
+        // Aplicar filtro cuando el texto cambie
         etBuscarEmpleado.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
 
@@ -103,4 +105,5 @@ class PersonalApiFragment : Fragment() {
         personalAdapter.updatePersonal(filteredList)
     }
 }
+
 
