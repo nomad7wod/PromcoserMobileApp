@@ -12,3 +12,4 @@ class RegisterRepository {
         return RegisterApiService.register(request)
     }
 }
+

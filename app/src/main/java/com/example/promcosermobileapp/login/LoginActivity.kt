@@ -2,9 +2,8 @@ package com.example.promcosermobileapp.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.text.InputType
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.promcosermobileapp.NavigationPromcoserActivity
 import com.example.promcosermobileapp.R
@@ -19,9 +18,11 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
+    private lateinit var imgTogglePassword: ImageView
     private lateinit var btnLogin: Button
     private lateinit var btnRegister: Button
-    private val loginRepository = LoginRepository() // Instancia del repositorio
+    private val loginRepository = LoginRepository()
+    private var isPasswordVisible = false // Estado inicial de visibilidad
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,8 +30,23 @@ class LoginActivity : AppCompatActivity() {
 
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
+        imgTogglePassword = findViewById(R.id.imgTogglePassword)
         btnLogin = findViewById(R.id.btnAcceder)
         btnRegister = findViewById(R.id.btnRegistro)
+
+        // Configura el botón de mostrar/ocultar contraseña
+        imgTogglePassword.setOnClickListener {
+            isPasswordVisible = !isPasswordVisible
+            if (isPasswordVisible) {
+                etPassword.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                imgTogglePassword.setImageResource(R.drawable.ojo_abierto) // Cambia al ícono de ojo abierto
+            } else {
+                etPassword.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                imgTogglePassword.setImageResource(R.drawable.ojo_cerrado) // Cambia al ícono de ojo cerrado
+            }
+            etPassword.setSelection(etPassword.text.length) // Mantén el cursor al final
+        }
+
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -40,14 +56,13 @@ class LoginActivity : AppCompatActivity() {
                     Toast.makeText(this, "Bienvenido, Administrador", Toast.LENGTH_SHORT).show()
                     navigateToHome()
                 } else {
-                    // Si no son las credenciales predefinidas, proceder al login normal
                     login(email, password)
                 }
-                login(email, password)
             }
         }
+
         btnRegister.setOnClickListener {
-            val intent = Intent(this, Register::class.java)
+            val intent = Intent(this@LoginActivity, Register::class.java)
             startActivity(intent)
         }
     }
@@ -59,7 +74,7 @@ class LoginActivity : AppCompatActivity() {
                 false
             }
             !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                Toast.makeText(this, "Ingrese un correo electrónico válido", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Ingrese un correo válido", Toast.LENGTH_SHORT).show()
                 false
             }
             else -> true
@@ -68,7 +83,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login(email: String, password: String) {
         val loginRequest = LoginRequest(email, password)
-
         loginRepository.login(loginRequest).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
@@ -96,4 +110,5 @@ class LoginActivity : AppCompatActivity() {
         finish()
     }
 }
+
 

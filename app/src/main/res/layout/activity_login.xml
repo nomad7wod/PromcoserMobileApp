@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".login.LoginActivity">
+
     <ImageView
         android:id="@+id/imgLogo"
         android:layout_width="365dp"
@@ -15,30 +17,32 @@
         android:layout_marginEnd="20dp"
         android:contentDescription="@string/valLogo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/titulo_fondo" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_width="252dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
         android:text="@string/valTituloLogin"
         android:textColor="@color/material_dynamic_neutral0"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/imgLogo"
+        tools:ignore="TextSizeCheck" />
 
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="20dp"
         android:autofillHints=""
         android:background="@android:drawable/editbox_background_normal"
@@ -53,40 +57,58 @@
         app:layout_constraintTop_toBottomOf="@+id/textView"
         tools:ignore="VisualLintTextFieldSize" />
 
-    <EditText
-        android:id="@+id/etPassword"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
-        android:autofillHints=""
-        android:background="@android:drawable/editbox_background_normal"
-        android:ems="10"
-        android:hint="@string/valHintPassword"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textColorHint="@color/design_default_color_primary_dark"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEmail"
-        tools:ignore="VisualLintTextFieldSize" />
+        app:layout_constraintTop_toBottomOf="@+id/etEmail">
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="@string/valHintPassword"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:paddingEnd="50dp"
+            android:textColorHint="@color/design_default_color_primary_dark"
+            android:textStyle="bold"
+            tools:ignore="Autofill,RtlSymmetry,VisualLintTextFieldSize" />
+
+        <ImageView
+            android:id="@+id/imgTogglePassword"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Mostrar"
+            android:padding="8dp"
+            android:src="@drawable/ojo_cerrado"
+            tools:ignore="HardcodedText,ImageContrastCheck" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btnAcceder"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="40dp"
         android:contentDescription="@string/valAcceder"
         android:text="@string/valAcceder"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
         tools:ignore="VisualLintButtonSize" />
 
     <Button
@@ -99,6 +121,8 @@
         android:text="@string/valRegistro"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnAcceder" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAcceder"
+        tools:ignore="VisualLintButtonSize" />
 </androidx.constraintlayout.widget.ConstraintLayout>

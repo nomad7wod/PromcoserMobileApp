@@ -1,79 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".registerPersonal.Register">
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".registerPersonal.Register">
 
-    <!-- Título -->
-    <TextView
-        android:id="@+id/Register_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:text="@string/valRegistro"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!-- Título -->
+<TextView
+    android:id="@+id/Register_title"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="40dp"
+    android:layout_marginEnd="20dp"
+    android:gravity="center"
+    android:text="@string/valRegistro"
+    android:textColor="@color/black"
+    android:textSize="24sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Campo Nombre -->
-
-    <!-- Campo Apellido -->
-
-    <!-- Campo Teléfono -->
-
-
-    <!-- Campo DNI -->
+<!-- Campos -->
     <EditText
         android:id="@+id/Register_nombre"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/valNombreRegis"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/Register_apellido"
+        android:textColorHint="#546E7A"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_title" />
+        app:layout_constraintTop_toBottomOf="@+id/Register_title"
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/Register_apellido"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/valApellidoRegis"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="139dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/Register_nombre"
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/Register_telefono"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:hint="@string/valTelefonoRegis"
         android:inputType="phone"
         android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_apellido" />
+        app:layout_constraintTop_toBottomOf="@+id/Register_apellido"
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/Register_dni"
@@ -85,12 +88,28 @@
         android:hint="@string/valDniRegis"
         android:inputType="number"
         android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_telefono" />
-    <!-- Campo Correo -->
+        app:layout_constraintTop_toBottomOf="@+id/Register_telefono"
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
-    <!-- Botón Registrar -->
+    <EditText
+        android:id="@+id/dateFecha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:hint="@string/valFechaRegis"
+        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Register_dni"
+        tools:ignore="Autofill,TextFields,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/Register_correo"
@@ -102,68 +121,12 @@
         android:hint="@string/valCorreoRegis"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateFecha" />
-
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="40dp"
-        android:text="@string/valRegistroRegis"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordRegis" />
-
-    <EditText
-        android:id="@+id/passwordRegis"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="@string/valPasswordRegis"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuarioRegis" />
-
-    <EditText
-        android:id="@+id/dateFecha"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="@string/valFechaRegis"
-        android:inputType="date"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_dni" />
-
-    <EditText
-        android:id="@+id/ubigeoRegis"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:ems="10"
-        android:hint="@string/valUbigeoRegis"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Register_correo" />
+        app:layout_constraintTop_toBottomOf="@+id/dateFecha"
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
 
     <EditText
         android:id="@+id/usuarioRegis"
@@ -172,13 +135,102 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:ems="10"
         android:hint="@string/valUsernameRegis"
         android:inputType="text|textPersonName"
         android:minHeight="48dp"
+        android:textColorHint="#546E7A"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ubigeoRegis" />
+        app:layout_constraintTop_toBottomOf="@+id/Register_correo"
+        tools:ignore="Autofill,VisualLintTextFieldSize" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usuarioRegis">
+
+        <EditText
+            android:id="@+id/passwordRegis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="@string/valPasswordRegis"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:paddingEnd="50dp"
+            android:textColorHint="#546E7A"
+            android:textStyle="bold"
+            tools:ignore="Autofill,RtlSymmetry,VisualLintTextFieldSize,DuplicateSpeakableTextCheck" />
+
+        <ImageView
+            android:id="@+id/imgTogglePassword1"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="Mostrar"
+            android:padding="8dp"
+            android:src="@drawable/ojo_cerrado"
+            tools:ignore="DuplicateIds,HardcodedText,ImageContrastCheck" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout1">
+
+        <EditText
+            android:id="@+id/confirmaContra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="@string/valConfirmaContra"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:paddingEnd="50dp"
+            android:textColorHint="#546E7A"
+            android:textStyle="bold"
+            tools:ignore="Autofill,RtlSymmetry,VisualLintTextFieldSize" />
+
+        <ImageView
+            android:id="@+id/imgTogglePassword2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="MostrarConfirma"
+            android:padding="8dp"
+            android:src="@drawable/ojo_cerrado"
+            tools:ignore="DuplicateIds,HardcodedText,ImageContrastCheck" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/valRegistroRegis"
+        android:textColor="#212121"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

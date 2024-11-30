@@ -1,8 +1,10 @@
 package com.example.promcosermobileapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
+import android.view.MenuItem
+import android.widget.Toast
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -12,11 +14,25 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import com.example.promcosermobileapp.databinding.ActivityNavigationPromcoserBinding
+import com.example.promcosermobileapp.login.LoginActivity
 
 class NavigationPromcoserActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityNavigationPromcoserBinding
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.logOut -> {
+                // Aquí implementas tu lógica de logout
+                performLogout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,11 +42,7 @@ class NavigationPromcoserActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarNavigationPromcoser.toolbar)
 
-        binding.appBarNavigationPromcoser.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null)
-                .setAnchorView(R.id.fab).show()
-        }
+
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_navigation_promcoser)
@@ -55,4 +67,19 @@ class NavigationPromcoserActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_fragment_content_navigation_promcoser)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+    private fun performLogout() {
+        // Limpia datos de usuario (ejemplo: SharedPreferences)
+        val sharedPreferences = getSharedPreferences("user_prefs", MODE_PRIVATE)
+        sharedPreferences.edit().clear().apply()
+
+        // Muestra un mensaje al usuario
+        Toast.makeText(this, "Sesión cerrada", Toast.LENGTH_SHORT).show()
+
+        // Redirige al usuario a la pantalla de inicio de sesión
+        val intent = Intent(this, LoginActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish() // Finaliza la actividad actual
+    }
+
 }
