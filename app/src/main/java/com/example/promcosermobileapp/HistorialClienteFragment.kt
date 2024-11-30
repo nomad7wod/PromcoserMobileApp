@@ -38,7 +38,7 @@ class HistorialClienteFragment : Fragment() {
         etSearchCliente = view.findViewById(R.id.etBuscar)
 
         etSearchCliente.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
                 charSequence?.let { filterClienteList(it.toString()) }
             }
@@ -58,7 +58,7 @@ class HistorialClienteFragment : Fragment() {
                 response: Response<List<ClienteModel>>
             ) {
                 if (response.isSuccessful) {
-                    lstClientes = response.body() as ArrayList<ClienteModel>
+                    lstClientes = response.body() ?: emptyList()
                     clienteAdapter.updateCliente(lstClientes)
 
                 }
@@ -71,10 +71,16 @@ class HistorialClienteFragment : Fragment() {
 
     }
     private fun filterClienteList(query: String) {
-        val filteredList = lstClientes.filter {
-            it.nombre.contains(query, ignoreCase = true) || it.apellido.contains(query, ignoreCase = true)
+        try {
+            val filteredList = lstClientes.filter { client ->
+                client.nombre?.let { name ->
+                    name.contains(query, ignoreCase = true)
+                } ?: false // Si name es null, la condición es false
+            }
+            clienteAdapter.updateCliente(filteredList)
+        } catch (e: Exception) {
+            Log.e("HistorialClienteFragment", "Error al filtrar clientes", e)
         }
-        clienteAdapter.updateCliente(filteredList)
 
     }
 
