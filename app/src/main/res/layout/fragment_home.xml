@@ -181,28 +181,64 @@
                     android:textColorHint="@color/design_default_color_primary_dark"
                     android:textStyle="bold" />
 
-                <CheckBox
-                    android:id="@+id/checkBoxFirmaControlador"
+                <!-- Nuevos campos -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="PETRÓLEO:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <EditText
+                    android:id="@+id/etPetroleo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="FIRMA CONTROLADOR"
+                    android:hint="PETRÓLEO"
+                    android:inputType="text"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:textColorHint="@color/design_default_color_primary_dark"
                     android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ACEITE HIDRÁULICO:"
+                    android:textStyle="bold"
+                    android:layout_marginTop="16dp" />
+
+                <EditText
+                    android:id="@+id/etAceiteHidraulico"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:hint="ACEITE HIDRÁULICO"
+                    android:inputType="text"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:textColorHint="@color/design_default_color_primary_dark"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Próximo Mantenimiento"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"/>
+
+                <DatePicker
+                    android:id="@+id/etProximoMantenimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner" />
 
                 <CheckBox
                     android:id="@+id/checkBoxFirmaOperador"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="FIRMA OPERADOR"
-                    android:textStyle="bold" />
-
-                <CheckBox
-                    android:id="@+id/checkBoxFirmaIngeniero"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="FIRMA INGENIERO"
+                    android:text="FIRMA CLIENTE Y OPERADOR"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -227,4 +263,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
 

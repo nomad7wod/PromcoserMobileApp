@@ -3,7 +3,7 @@ package com.example.promcosermobileapp.ui.cliente.model
 
 data class ClienteModel (
     //val id_cliente: Int,
-    val tipo_cliente: String,
+    val tipoCliente: String,
     val telefono: String,
     val correo: String,
     val direccion: String,
@@ -11,6 +11,6 @@ data class ClienteModel (
     val nombre: String,
     val apellido: String,
     val dni: String,
-    val razon_social: String,
+    val razonSocial: String,
     val ruc: String
 )

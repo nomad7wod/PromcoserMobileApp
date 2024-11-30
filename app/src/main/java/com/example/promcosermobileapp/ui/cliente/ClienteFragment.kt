@@ -24,9 +24,7 @@ class ClienteFragment : Fragment() {
 
     private val viewModel: ClienteViewModel by activityViewModels()
 
-    // Función para limpiar los campos del formulario
     private fun limpiarFormulario() {
-        // Encuentra y limpia los campos de texto
         requireView().findViewById<TextView>(R.id.etNombreCliente).text = ""
         requireView().findViewById<TextView>(R.id.etApellidoCliente).text = ""
         requireView().findViewById<TextView>(R.id.etDniCliente).text = ""
@@ -36,14 +34,11 @@ class ClienteFragment : Fragment() {
         requireView().findViewById<TextView>(R.id.etCorreoCliente).text = ""
         requireView().findViewById<TextView>(R.id.etDireccionCliente).text = ""
 
-        // Restablecer el Spinner al primer elemento
         requireView().findViewById<Spinner>(R.id.spTipoCliente).setSelection(0)
 
-        // Restablecer el estado del RadioGroup
         val radioGroup = requireView().findViewById<RadioGroup>(R.id.rgEstadoCliente)
         radioGroup.clearCheck()
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,26 +53,17 @@ class ClienteFragment : Fragment() {
             navController.navigate(R.id.historialClienteFragment)
         }
 
-
-
-
-        // Observa el resultado de createCliente
         viewModel.clienteList.observe(viewLifecycleOwner) { isSuccessful ->
             if (isSuccessful) {
                 Toast.makeText(requireContext(), "Registro exitoso", Toast.LENGTH_SHORT).show()
                 limpiarFormulario()
-                // Cliente creado con éxito, navega o muestra un mensaje
                 Log.d("ClienteFragment", "Cliente registrado exitosamente")
             } else {
                 Toast.makeText(requireContext(), "Error al registrar el cliente", Toast.LENGTH_SHORT).show()
-                // Mostrar un mensaje de error
                 Log.e("ClienteFragment", "Error al registrar cliente")
             }
         }
 
-
-
-        // Inicialización de vistas
         val tipoCliente: Spinner = view.findViewById(R.id.spTipoCliente)
         val nombre: TextView = view.findViewById(R.id.etNombreCliente)
         val apellido: TextView = view.findViewById(R.id.etApellidoCliente)
@@ -89,9 +75,6 @@ class ClienteFragment : Fragment() {
         val direccion: TextView = view.findViewById(R.id.etDireccionCliente)
         val regEstado: RadioGroup = view.findViewById(R.id.rgEstadoCliente)
 
-
-
-        // Configuración del Spinner con valor predeterminado
         val opciones = listOf("Seleccione tipo", "Cliente Natural", "Cliente Jurídico")
         val adapter = ArrayAdapter(
             requireContext(),
@@ -103,8 +86,12 @@ class ClienteFragment : Fragment() {
 
         val btnRegistrarCliente: Button = view.findViewById(R.id.btnRegistrarCliente)
         btnRegistrarCliente.setOnClickListener {
-            // Obtener valores de los campos
-            val tipoClienteSeleccionado = tipoCliente.selectedItem?.toString() ?: "No seleccionado"
+            val tipoClienteSeleccionado = when (tipoCliente.selectedItem?.toString()) {
+                "Cliente Natural" -> "natural"
+                "Cliente Jurídico" -> "juridico"
+                else -> ""
+            }
+
             val nombreText = nombre.text.toString()
             val apellidoText = apellido.text.toString()
             val dniText = dni.text.toString()
@@ -117,19 +104,17 @@ class ClienteFragment : Fragment() {
             val estadoRadioButton: RadioButton = view.findViewById(estadoSeleccionadoId)
             val estadoBoolean = estadoRadioButton.text.toString() == "Activo"
 
-            // Validar si el valor seleccionado es válido
             if (tipoClienteSeleccionado.isEmpty() || tipoClienteSeleccionado == "Seleccione tipo") {
                 Log.e("Error", "Debe seleccionar un tipo de cliente válido.")
                 return@setOnClickListener
             }
 
-            // Crear objeto ClienteModel
             val cliente = ClienteModel(
-                tipo_cliente = tipoClienteSeleccionado,
+                tipoCliente = tipoClienteSeleccionado,
                 nombre = nombreText,
                 apellido = apellidoText,
                 dni = dniText,
-                razon_social = razonSocialText,
+                razonSocial = razonSocialText,
                 ruc = rucText,
                 telefono = telefonoText,
                 correo = correoText,
@@ -137,15 +122,13 @@ class ClienteFragment : Fragment() {
                 estado = estadoBoolean
             )
 
-            // Log para depuración
             Log.d("DatosEnviados", Gson().toJson(cliente))
 
-
-            // Llamar al ViewModel para registrar el cliente
             viewModel.createCliente(cliente)
         }
 
         return view
     }
-
 }
+
+
