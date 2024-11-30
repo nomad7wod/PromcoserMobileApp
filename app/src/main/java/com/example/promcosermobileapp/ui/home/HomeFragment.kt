@@ -14,7 +14,11 @@ import androidx.navigation.fragment.findNavController
 import com.example.promcosermobileapp.R
 import com.example.promcosermobileapp.databinding.FragmentHomeBinding
 import com.example.promcosermobileapp.ui.home.model.ParteDiarioModel
+import com.google.gson.Gson
+import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
+import java.util.TimeZone
 
 class HomeFragment : Fragment() {
     private val viewModel: HomeViewModel by activityViewModels()
@@ -119,16 +123,22 @@ class HomeFragment : Fragment() {
             }
         }
     }
+    private fun formatToISO8601(calendar: Calendar): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+        sdf.timeZone = TimeZone.getTimeZone("UTC") // Establece UTC como la zona horaria
+        return sdf.format(calendar.time)
+    }
 
     private fun setupButton() {
         binding.btnGuardar.setOnClickListener {
             val horometroInicio = binding.etHorometroInicio.text.toString()
             val horometroFinal = binding.etHorometroFinal.text.toString()
             val fecha = selectedDate?.let {
-                "${it.get(Calendar.DAY_OF_MONTH)}/${it.get(Calendar.MONTH) + 1}/${it.get(Calendar.YEAR)}"
+                formatToISO8601(it) // Convierte a formato ISO 8601
             } ?: "Fecha no seleccionada"
+
             val fechamantenimiento = selectedDate?.let {
-                "${it.get(Calendar.DAY_OF_MONTH)}/${it.get(Calendar.MONTH) + 1}/${it.get(Calendar.YEAR)}"
+                formatToISO8601(it) // Convierte a formato ISO 8601
             } ?: "Fecha no seleccionada"
 
             // Validaciones
@@ -152,14 +162,17 @@ class HomeFragment : Fragment() {
                 firmas = true, // Suponiendo que el parte diario tiene una firma
                 horometroInicio = horometroInicio.toDouble(),
                 horometroFinal = horometroFinal.toDouble(),
-                idCliente = idCliente,
-                idPersonal = idPersonal,
-                idMaquinaria = idMaquinaria,
+                idCliente = binding.spinnerCliente.selectedItemPosition + 1,
+                idPersonal = binding.spinnerOperador.selectedItemPosition + 1,
+                idMaquinaria = binding.spinnerPlaca.selectedItemPosition + 1,
                 lugarTrabajo = binding.etLugarTrabajo.text.toString(),
                 petroleo = binding.etPetroleo.text.toString().toDouble(),
                 aceite = binding.etAceiteHidraulico.text.toString().toDouble(),
                 proximoMantenimiento = fechamantenimiento
             )
+            val jsonParteDiario = Gson().toJson(parteDiario)
+            Log.d("ParteDiarioJSON", jsonParteDiario)
+            Log.d("ParteDiario", parteDiario.toString())
 
             // Llamar al ViewModel para guardar el Parte Diario
             viewModel.createParteDiario(parteDiario)
@@ -171,5 +184,3 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 }
-
-

@@ -12,7 +12,7 @@ import retrofit2.http.POST
 interface ParteDiarioService {
     @GET("ParteDiario")
     fun getParteDiario(): Call<List<ParteDiarioModel>>
-    @POST("ParteDiario")
+    @POST("ParteDiarios")
     fun createParteDiario(@Body parteDiario: ParteDiarioModel): Call<ParteDiarioModel>
     @GET("Clientes")
     fun getCliente(): Call<List<ClienteModel>>
