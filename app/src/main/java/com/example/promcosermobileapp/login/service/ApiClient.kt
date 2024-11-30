@@ -1,12 +1,12 @@
-package com.example.promcosermobileapp.login
+package com.example.promcosermobileapp.login.service
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-    private val base_url = "http://04e0-2001-1388-ae1-a8c4-7466-7948-ce8e-d9e8.ngrok-free.app/api/personal/"
+    private val base_url = "https://22c4-2001-1388-ae1-198e-8c7a-96a7-be33-e333.ngrok-free.app/api/Personal/"
 
-    public val retrofit by lazy {
+    private val retrofit by lazy {
         Retrofit.Builder()
             .baseUrl(base_url)
             .addConverterFactory(GsonConverterFactory.create())
@@ -16,4 +16,3 @@ object ApiClient {
         retrofit.create(AuthService::class.java)
     }
 }
-
