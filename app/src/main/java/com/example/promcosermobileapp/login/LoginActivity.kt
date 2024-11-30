@@ -6,19 +6,22 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.promcosermobileapp.MainActivity
 import com.example.promcosermobileapp.NavigationPromcoserActivity
 import com.example.promcosermobileapp.R
+import com.example.promcosermobileapp.login.model.LoginRequest
+import com.example.promcosermobileapp.login.model.LoginResponse
+import com.example.promcosermobileapp.login.repository.LoginRepository
+import com.example.promcosermobileapp.registerPersonal.Register
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnLogin: Button
-    private val authService: AuthService = ApiClient.retrofit.create(AuthService::class.java)
+    private lateinit var btnRegister: Button
+    private val loginRepository = LoginRepository() // Instancia del repositorio
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,42 +30,63 @@ class LoginActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         btnLogin = findViewById(R.id.btnAcceder)
-
+        btnRegister = findViewById(R.id.btnRegistro)
         btnLogin.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+
+            if (validateInputs(email, password)) {
                 login(email, password)
-            } else {
-                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
             }
+        }
+        btnRegister.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun validateInputs(email: String, password: String): Boolean {
+        return when {
+            email.isEmpty() || password.isEmpty() -> {
+                Toast.makeText(this, "Complete todos los campos", Toast.LENGTH_SHORT).show()
+                false
+            }
+            !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                Toast.makeText(this, "Ingrese un correo electrónico válido", Toast.LENGTH_SHORT).show()
+                false
+            }
+            else -> true
         }
     }
 
     private fun login(email: String, password: String) {
         val loginRequest = LoginRequest(email, password)
-        if(email=="admin@gmail.com" && password=="12345"){
-            val intent = Intent(this@LoginActivity, NavigationPromcoserActivity::class.java)
-            startActivity(intent)
-            finish()
-        }else{
-            authService.login(loginRequest).enqueue(object : Callback<LoginResponse> {
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                    if (response.isSuccessful && response.body()?.success == true) {
-                        Toast.makeText(this@LoginActivity, "Login Exitoso", Toast.LENGTH_SHORT).show()
-                        // Aquí redirigo xd
-                        val intent = Intent(this@LoginActivity, NavigationPromcoserActivity::class.java)
-                        startActivity(intent)
-                        finish()
-                    } else {
-                        Toast.makeText(this@LoginActivity, "Credenciales Incorrectas", Toast.LENGTH_SHORT).show()
-                    }
-                }
 
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Toast.makeText(this@LoginActivity, "Error en la conexión", Toast.LENGTH_SHORT).show()
+        loginRepository.login(loginRequest).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    val loginResponse = response.body()
+                    if (loginResponse?.success == true) {
+                        Toast.makeText(this@LoginActivity, loginResponse.message, Toast.LENGTH_SHORT).show()
+                        navigateToHome()
+                    } else {
+                        Toast.makeText(this@LoginActivity, loginResponse?.message ?: "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this@LoginActivity, "Error: ${response.code()}", Toast.LENGTH_SHORT).show()
                 }
-            })
-        }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Toast.makeText(this@LoginActivity, "Error en la conexión: ${t.localizedMessage}", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    private fun navigateToHome() {
+        val intent = Intent(this, NavigationPromcoserActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
+

@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/nav_maquinaria"
         android:name="com.example.promcosermobileapp.MaquinariaFragment"
-        android:label="fragment_maquinaria"
+        android:label="Maquinaria"
         tools:layout="@layout/fragment_maquinaria" />
 
     <action
@@ -30,7 +30,7 @@
     <fragment
         android:id="@+id/listaMaquinariasFragment"
         android:name="com.example.promcosermobileapp.ui.ListaMaquinariasFragment"
-        android:label="listaMaquinariasFragment"
+        android:label="Historial de Maquinas"
         tools:layout="@layout/activity_lista_maquinarias_fragment" />
 
     <fragment
@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/historialClienteFragment"
         android:name="com.example.promcosermobileapp.HistorialClienteFragment"
-        android:label="fragment_historial_cliente"
+        android:label="@string/titleFragHistorialCliente"
         tools:layout="@layout/fragment_historial_cliente" />
 
 </navigation>

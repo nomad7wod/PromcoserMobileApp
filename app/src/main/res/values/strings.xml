@@ -15,6 +15,20 @@
     <string name="valHintPassword">Contraseña</string>
     <string name="valAcceder">ACCEDER</string>
     <string name="valRegistro">REGISTRARME</string>
+    <string name="valTogglePasswordVisibility">Alternar visibilidad de contraseña</string>
+
+    <!--Registro-->
+    <string name="valTitleRegis">Registro</string>
+    <string name="valNombreRegis">Nombre</string>
+    <string name="valApellidoRegis">Apellido</string>
+    <string name="valTelefonoRegis">Telefono</string>
+    <string name="valCorreoRegis">Correo</string>
+    <string name="valDniRegis">DNI</string>
+    <string name="valFechaRegis">Fecha de Nacimiento</string>
+    <string name="valUbigeoRegis">Ubigeo</string>
+    <string name="valUsernameRegis">Usuario</string>
+    <string name="valPasswordRegis">Contraseña</string>
+    <string name="valRegistroRegis">Registrarme</string>
 
     <string name="menu_home">Parte Diario</string>
     <string name="menu_personal">Personal</string>
@@ -66,4 +80,6 @@
     <string name="moreDetailsAddressC">"Direccion:"</string>
     <string name="moreDetailsStatusC">"Estado:"</string>
     <string name="moreDetailsSocialReasonC">Razon social:</string>
+    <string name="valNombreRegistro">Nombre</string>
+    <string name="fhcTituloBuscar">Buscar cliente:</string>
 </resources>

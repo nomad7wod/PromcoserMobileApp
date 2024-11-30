@@ -1,59 +1,88 @@
 package com.example.promcosermobileapp
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.promcosermobileapp.ui.cliente.adapter.ClienteAdapter
+import com.example.promcosermobileapp.ui.cliente.model.ClienteModel
+import com.example.promcosermobileapp.ui.cliente.service.RetrofitInstance
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HistorialClienteFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HistorialClienteFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var lstClientes = listOf<ClienteModel>()
+    private lateinit var etSearchCliente: EditText
+    private lateinit var clienteAdapter: ClienteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_historial_cliente, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_historial_cliente, container, false)
+        val rvHistorialCliente = view.findViewById<RecyclerView>(R.id.rvHistorialClientes)
+        rvHistorialCliente.layoutManager = LinearLayoutManager(requireContext())
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HistorialClienteFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HistorialClienteFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        clienteAdapter = ClienteAdapter(lstClientes)
+        rvHistorialCliente.adapter = clienteAdapter
+
+        etSearchCliente = view.findViewById(R.id.etBuscar)
+
+        etSearchCliente.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(charSequence: CharSequence?, start: Int, before: Int, count: Int) {
+                charSequence?.let { filterClienteList(it.toString()) }
+            }
+
+            override fun afterTextChanged(p0: Editable?) {}
+
+        })
+        loadHistorialCliente()
+        return view
+    }
+    private fun loadHistorialCliente() {
+        val call = RetrofitInstance.api.getClientes()
+
+        call.enqueue(object : Callback<List<ClienteModel>> {
+            override fun onResponse(
+                call: Call<List<ClienteModel>>,
+                response: Response<List<ClienteModel>>
+            ) {
+                if (response.isSuccessful) {
+                    lstClientes = response.body() ?: emptyList()
+                    clienteAdapter.updateCliente(lstClientes)
+
                 }
             }
+
+            override fun onFailure(call: Call<List<ClienteModel>>, t: Throwable) {
+                Log.e("HistorialClienteFragment", "Error al cargar el historial de clientes", t)
+            }
+        })
+
     }
+    private fun filterClienteList(query: String) {
+        try {
+            val filteredList = lstClientes.filter { client ->
+                client.nombre?.let { name ->
+                    name.contains(query, ignoreCase = true)
+                } ?: false // Si name es null, la condición es false
+            }
+            clienteAdapter.updateCliente(filteredList)
+        } catch (e: Exception) {
+            Log.e("HistorialClienteFragment", "Error al filtrar clientes", e)
+        }
+
+    }
+
+
 }

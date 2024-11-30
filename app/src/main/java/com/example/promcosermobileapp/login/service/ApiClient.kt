@@ -1,10 +1,9 @@
-package com.example.promcosermobileapp.ui.home.service
+package com.example.promcosermobileapp.login.service
 
-import com.example.promcosermobileapp.ui.home.repository.ParteDiarioApiRepository
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitInstance {
+object ApiClient {
     private val base_url = "https://655d-2800-200-e731-a8c-289f-f79f-ffbe-ffe6.ngrok-free.app/api/"
 
     private val retrofit by lazy {
@@ -12,10 +11,8 @@ object RetrofitInstance {
             .baseUrl(base_url)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
     }
-    val api: ParteDiarioService by lazy {
-        retrofit.create(ParteDiarioService::class.java)
+    val api: AuthService by lazy {
+        retrofit.create(AuthService::class.java)
     }
-
 }
